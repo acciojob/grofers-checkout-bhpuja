@@ -1,2 +1,20 @@
 
 /* Your CSS Code here. */
+
+/* Style for the table */
+#groceryTable {
+    width: 50%;
+    margin: auto;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+#groceryTable th, #groceryTable td {
+    padding: 10px;
+    text-align: left;
+}
+
+#totalRow {
+    font-weight: bold;
+    background-color: #f0f0f0;
+}

@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Grofers Checkout</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>Grocery List</h1>
@@ -20,29 +21,7 @@
         </tr>
     </table>
 
-    <script>
-        // Function to calculate the total price and add a new row to the table
-        function calculateTotalPrice() {
-            const priceElements = document.querySelectorAll('.prices');
-            let total = 0;
-
-            priceElements.forEach(priceElement => {
-                total += parseFloat(priceElement.textContent);
-            });
-
-            const totalRow = document.createElement('tr');
-            totalRow.id = 'totalRow';
-            const totalCell = document.createElement('td');
-            totalCell.colSpan = 2;
-            totalCell.textContent = `Total Price: ${total}`;
-            totalRow.appendChild(totalCell);
-
-            document.getElementById('groceryTable').appendChild(totalRow);
-        }
-
-        // Call the function to calculate and display the total price
-        calculateTotalPrice();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
 
