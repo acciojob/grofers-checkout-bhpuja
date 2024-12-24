@@ -19,46 +19,32 @@
             <td class="prices">20</td>
         </tr>
     </table>
+
     <script>
-        // Function to calculate the total price and update the table
+        // Function to calculate the total price and add a new row to the table
         function calculateTotalPrice() {
-            // Get all elements with the class 'prices'
             const priceElements = document.querySelectorAll('.prices');
-            
-            // Calculate the sum of prices
             let total = 0;
+
             priceElements.forEach(priceElement => {
                 total += parseFloat(priceElement.textContent);
             });
 
-            // Check if the total row already exists, remove it if it does
-            const existingTotalRow = document.querySelector('#totalRow');
-            if (existingTotalRow) {
-                existingTotalRow.remove();
-            }
-
-            // Create a new row for the total price
             const totalRow = document.createElement('tr');
-            totalRow.id = 'totalRow'; // Add an ID to identify the total row
+            totalRow.id = 'totalRow';
             const totalCell = document.createElement('td');
-            totalCell.colSpan = 2; // Make it span across the table
+            totalCell.colSpan = 2;
             totalCell.textContent = `Total Price: ${total}`;
             totalRow.appendChild(totalCell);
 
-            // Append the total row to the table
-            const table = document.getElementById('groceryTable');
-            table.appendChild(totalRow);
+            document.getElementById('groceryTable').appendChild(totalRow);
         }
 
-        // Call the function initially
+        // Call the function to calculate and display the total price
         calculateTotalPrice();
-
-        // Optional: Recalculate when prices are updated (for dynamic updates)
-        document.querySelectorAll('.prices').forEach(price => {
-            price.addEventListener('input', calculateTotalPrice);
-        });
     </script>
 </body>
 </html>
+
 
 
