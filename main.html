@@ -1,86 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grocery Checkout</title>
-    <style>
-        table {
-            width: 50%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
-        .total-row {
-            font-weight: bold;
-        }
-    </style>
+    <title>Grofers Checkout</title>
 </head>
 <body>
-
-    <h2 style="text-align: center;">Grocery List</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Item</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="item">
-                <td>Apples</td>
-                <td class="prices">10</td>
-            </tr>
-            <tr class="item">
-                <td>Bananas</td>
-                <td class="prices">20</td>
-            </tr>
-            <tr class="item">
-                <td>Carrots</td>
-                <td class="prices">15</td>
-            </tr>
-            <tr class="item">
-                <td>Oranges</td>
-                <td class="prices">25</td>
-            </tr>
-        </tbody>
+    <h1>Grocery List</h1>
+    <table border="1" id="groceryTable">
+        <tr class="item">
+            <td>Apples</td>
+            <td class="prices">50</td>
+        </tr>
+        <tr class="item">
+            <td>Bananas</td>
+            <td class="prices">30</td>
+        </tr>
+        <tr class="item">
+            <td>Carrots</td>
+            <td class="prices">20</td>
+        </tr>
     </table>
-
-    <button id="calculateTotal" style="display: block; margin: 20px auto;">Calculate Total Price</button>
-
     <script>
-        document.getElementById("calculateTotal").addEventListener("click", function() {
-            // Get all price cells using querySelectorAll
-            let prices = document.querySelectorAll('.prices');
+        // Function to calculate the total price and update the table
+        function calculateTotalPrice() {
+            // Get all elements with the class 'prices'
+            const priceElements = document.querySelectorAll('.prices');
             
+            // Calculate the sum of prices
             let total = 0;
-            
-            // Iterate over the prices and sum them up
-            prices.forEach(function(priceElement) {
+            priceElements.forEach(priceElement => {
                 total += parseFloat(priceElement.textContent);
             });
 
+            // Check if the total row already exists, remove it if it does
+            const existingTotalRow = document.querySelector('#totalRow');
+            if (existingTotalRow) {
+                existingTotalRow.remove();
+            }
+
             // Create a new row for the total price
-            let tableBody = document.querySelector("table tbody");
-
-            let totalRow = document.createElement("tr");
-            totalRow.classList.add("total-row");
-
-            let totalCell = document.createElement("td");
-            totalCell.colSpan = "2"; // Make it span across both columns
-            totalCell.textContent = "Total Price: " + total;
-
+            const totalRow = document.createElement('tr');
+            totalRow.id = 'totalRow'; // Add an ID to identify the total row
+            const totalCell = document.createElement('td');
+            totalCell.colSpan = 2; // Make it span across the table
+            totalCell.textContent = `Total Price: ${total}`;
             totalRow.appendChild(totalCell);
-            tableBody.appendChild(totalRow);
+
+            // Append the total row to the table
+            const table = document.getElementById('groceryTable');
+            table.appendChild(totalRow);
+        }
+
+        // Call the function initially
+        calculateTotalPrice();
+
+        // Optional: Recalculate when prices are updated (for dynamic updates)
+        document.querySelectorAll('.prices').forEach(price => {
+            price.addEventListener('input', calculateTotalPrice);
         });
     </script>
-
 </body>
 </html>
+
 
