@@ -1,26 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grofers Checkout</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .total-row {
+            font-weight: bold;
+            background-color: #ffffe0;
+        }
+    </style>
 </head>
 <body>
-    <h1>Grocery List</h1>
-    <table border="1" id="groceryTable">
-        <tr class="item">
-            <td>Apples</td>
-            <td class="prices">50</td>
-        </tr>
-        <tr class="item">
-            <td>Bananas</td>
-            <td class="prices">30</td>
-        </tr>
-        <tr class="item">
-            <td>Carrots</td>
-            <td class="prices">20</td>
-        </tr>
+    <h1 style="text-align: center;">Grofers Checkout</h1>
+    <table id="grocery-table">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="item">
+                <td>Apples</td>
+                <td class="prices">30</td>
+            </tr>
+            <tr class="item">
+                <td>Bananas</td>
+                <td class="prices">20</td>
+            </tr>
+            <tr class="item">
+                <td>Oranges</td>
+                <td class="prices">40</td>
+            </tr>
+        </tbody>
     </table>
-
     <script src="script.js"></script>
 </body>
 </html>
