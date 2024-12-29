@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const totalCell = document.createElement("td");
     totalCell.colSpan = 2;
-    totalCell.textContent = `Total price: ₹${totalprice.toFixed(2)}`;
+    totalCell.textContent = `Total price: ₹${totalPrice.toFixed(2)}`;
 
     totalRow.appendChild(totalCell);
     table.appendChild(totalRow);
